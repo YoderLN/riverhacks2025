@@ -9,8 +9,15 @@ import VectorLayer from 'ol/layer/Vector';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
 import { fromLonLat } from 'ol/proj';
+import Circle from 'ol/geom/Circle';
+import { Fill, Stroke } from 'ol/style';
 
-// 1. Create the map (your original part)
+// ✅ 0. Helper function: Miles to Meters
+function milesToMeters(miles) {
+  return miles * 1609.34;
+}
+
+// 1. Create the map
 const map = new Map({
   target: 'map',
   layers: [
@@ -19,21 +26,21 @@ const map = new Map({
     })
   ],
   view: new View({
-    center: fromLonLat([-97.748009, 30.277269]), // Use fromLonLat() for correct projection
+    center: fromLonLat([-97.748009, 30.277269]),
     zoom: 16
   })
 });
 
 // 2. Create a marker feature
 const marker = new Feature({
-  geometry: new Point(fromLonLat([-97.748009, 30.277269])) // Start Location 
+  geometry: new Point(fromLonLat([-97.748009, 30.277269]))
 });
 
 // 3. Style the marker
 marker.setStyle(new Style({
   image: new Icon({
     anchor: [0.5, 1],
-    src: 'https://openlayers.org/en/latest/examples/data/icon.png' // Simple marker icon
+    src: 'https://openlayers.org/en/latest/examples/data/icon.png'
   })
 }));
 
@@ -42,9 +49,41 @@ const vectorSource = new VectorSource({
   features: [marker]
 });
 
-// 5. Create a vector layer and add it to the map
+// 5. Create a vector layer for the marker
 const markerLayer = new VectorLayer({
   source: vectorSource
 });
 
 map.addLayer(markerLayer);
+
+// 6. Create a circle with radius 10 miles
+const center = marker.getGeometry().getCoordinates(); // ✅ now use the marker's real location
+
+const radiusInMiles = 1; // 10 miles
+const radiusInMeters = milesToMeters(radiusInMiles);
+
+const circleFeature = new Feature({
+  geometry: new Circle(center, radiusInMeters)
+});
+
+circleFeature.setStyle(new Style({
+  stroke: new Stroke({
+    color: 'red',
+    width: 2
+  }),
+  fill: new Fill({
+    color: 'rgba(255, 0, 0, 0.1)'
+  })
+}));
+
+const circleSource = new VectorSource({
+  features: [circleFeature]
+});
+
+const circleLayer = new VectorLayer({
+  source: circleSource
+});
+
+map.addLayer(circleLayer);
+
+
