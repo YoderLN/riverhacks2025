@@ -1,6 +1,7 @@
 *
 */*
 
+!frontend/
 !css/
 !js/
 !*.html
