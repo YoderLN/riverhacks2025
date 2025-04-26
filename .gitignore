@@ -1,9 +1,12 @@
 *
 */*
 
-!frontend/
-!css/
-!js/
+!.gitignore
+!riverhacks_frontend/
+!.github/
+!package.json
+!package-lock.json
+!readme.md
 !*.html
 !*.css
 !*.js
