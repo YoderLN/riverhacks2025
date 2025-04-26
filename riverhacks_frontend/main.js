@@ -105,9 +105,9 @@ for(let i = 0; i < trucks.length; i++) {
 }
 
 // 6. Create a circle with radius 10 miles
-const center = marker.getGeometry().getCoordinates(); // ✅ now use the marker's real location
+const center = marker.getGeometry().getCoordinates(); 
 
-const radiusInMiles = 1; // 10 miles
+const radiusInMiles = 2; // 10 miles
 const radiusInMeters = milesToMeters(radiusInMiles);
 
 const circleFeature = new Feature({
@@ -120,7 +120,7 @@ circleFeature.setStyle(new Style({
     width: 2
   }),
   fill: new Fill({
-    color: 'rgba(0, 0, 255, 0.1)'
+    color: 'rgba(0, 0, 255, 0.3)'
   })
 }));
 
