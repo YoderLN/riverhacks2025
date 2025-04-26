@@ -111,11 +111,11 @@ const circleFeature = new Feature({
 
 circleFeature.setStyle(new Style({
   stroke: new Stroke({
-    color: 'red',
+    color: 'blue',
     width: 2
   }),
   fill: new Fill({
-    color: 'rgba(255, 0, 0, 0.1)'
+    color: 'rgba(0, 0, 255, 0.1)'
   })
 }));
 
