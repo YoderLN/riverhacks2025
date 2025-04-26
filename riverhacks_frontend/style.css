@@ -8,3 +8,18 @@ html, body {
   bottom: 0;
   width: 100%;
 }
+
+/*custom modification of provided CSS*/
+.ol-zoom.ol-unselectable.ol-control {
+  right: 5em;
+  left: 95%;
+}
+
+/*custom html*/
+aside {
+  position: absolute;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background-color: white;
+}
