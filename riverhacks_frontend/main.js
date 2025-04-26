@@ -17,45 +17,47 @@ function milesToMeters(miles) {
   return miles * 1609.34;
 }
 
-const test_data ={
-  'test1': {
-"latitude": 30.2771,
- "longitude": -97.72813,
- "title": "Arbor Food Park",
- "type": "Takeout Restaurant",
-},
-'test2': {
-"latitude": 30.263567,
-  "longitude": -97.76289,
-   "title": "The Picnic - Food Truck Park",
-      "type": "Food court",
-},
-'test3' : {
-"latitude": 30.26704,
-        "longitude": -97.73685,
-      "title": "Food trucks",
-      "type": "Mexican",
-}}
+const test_data = [
+  {
+    "latitude": 30.2771,
+    "longitude": -97.72813,
+    "title": "Arbor Food Park",
+    "type": "Takeout Restaurant",
+  },
+  {
+    "latitude": 30.263567,
+    "longitude": -97.76289,
+    "title": "The Picnic - Food Truck Park",
+    "type": "Food court",
+  },
+  {
+    "latitude": 30.26704,
+    "longitude": -97.73685,
+    "title": "Food trucks",
+    "type": "Mexican",
+  }
+];
 
-function importResturants(obj){
+function getResurant(res) {
   const temp_mark = new Feature({
-    geometry: new Point(fromLonLat([obj.test1.longitude,obj.test1.latitude]))
-  })
-temp_mark.setStyle(
-  new Style({
-    image: new Icon({
-      anchor: [0.5, 1],
-    src: 'https://openlayers.org/en/latest/examples/data/icon.png'
-    })
-  }))
-const vectorSource = new VectorSource({
-    features: [temp_mark]
+    geometry: new Point(fromLonLat([res.longitude,res.latitude]))
   });
-  
-  // 5. Create a vector layer for the marker
- return new VectorLayer({
-    source: vectorSource
-  });
+  temp_mark.setStyle(new Style({
+      image: new Icon({
+        anchor: [0.5, 1],
+        src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+      })
+  }));
+  const vSource = new VectorSource({ features: [temp_mark] });
+  return new VectorLayer({ source: vSource});
+}
+
+function importResturants(arr){
+  const restaurants = [];
+  for(let i = 0; i < arr.length; i++) {
+    restaurants.push(getResurant(arr[i]));
+  }
+  return restaurants;
 }
 
 // 1. Create the map
@@ -96,8 +98,11 @@ const markerLayer = new VectorLayer({
 });
 
 map.addLayer(markerLayer);
-map.addLayer(importResturants(test_data));
 
+const trucks = importResturants(test_data); 
+for(let i = 0; i < trucks.length; i++) {
+  map.addLayer(trucks[i]);
+}
 
 // 6. Create a circle with radius 10 miles
 const center = marker.getGeometry().getCoordinates(); // ✅ now use the marker's real location
