@@ -17,6 +17,47 @@ function milesToMeters(miles) {
   return miles * 1609.34;
 }
 
+const test_data ={
+  'test1': {
+"latitude": 30.2771,
+ "longitude": -97.72813,
+ "title": "Arbor Food Park",
+ "type": "Takeout Restaurant",
+},
+'test2': {
+"latitude": 30.263567,
+  "longitude": -97.76289,
+   "title": "The Picnic - Food Truck Park",
+      "type": "Food court",
+},
+'test3' : {
+"latitude": 30.26704,
+        "longitude": -97.73685,
+      "title": "Food trucks",
+      "type": "Mexican",
+}}
+
+function importResturants(obj){
+  const temp_mark = new Feature({
+    geometry: new Point(fromLonLat([obj.test1.longitude,obj.test1.latitude]))
+  })
+temp_mark.setStyle(
+  new Style({
+    image: new Icon({
+      anchor: [0.5, 1],
+    src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+    })
+  }))
+const vectorSource = new VectorSource({
+    features: [temp_mark]
+  });
+  
+  // 5. Create a vector layer for the marker
+ return new VectorLayer({
+    source: vectorSource
+  });
+}
+
 // 1. Create the map
 const map = new Map({
   target: 'map',
@@ -55,6 +96,8 @@ const markerLayer = new VectorLayer({
 });
 
 map.addLayer(markerLayer);
+map.addLayer(importResturants(test_data));
+
 
 // 6. Create a circle with radius 10 miles
 const center = marker.getGeometry().getCoordinates(); // ✅ now use the marker's real location
