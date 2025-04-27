@@ -12,6 +12,25 @@ import Style from 'ol/style/Style';
 import { fromLonLat,toLonLat  } from 'ol/proj';
 import Overlay from 'ol/Overlay'; 
 
+let ipAddress;
+let startingLocation;
+
+fetch('https://api.ipify.org?format=json')
+.then(response => response.json())
+.then(data => ipAddress = data.ip)
+.catch(ipAddress = 0);
+
+if(ipAddress != 0){
+  fetch(`https://freeipapi.com/api/json/${ipAddress}`)
+  .then(res=>res.json())
+  .then(data=> {
+    startingLocation = [data.latitude, data.longitude];
+  })
+  .catch(startingLocation = [-97.748009, 30.277269])
+} else {
+  startingLocation = [-97.748009, 30.277269];
+}
+
 const getData = (data) => {
   for (let i = 0; i < data.length; i++) {
     // Make longitude and latitude to floats
@@ -37,7 +56,7 @@ const map = new Map({
     })
   ],
   view: new View({
-    center: fromLonLat([-97.748009, 30.277269]),
+    center: fromLonLat(startingLocation),
     zoom: 16
   })
 });
@@ -83,7 +102,7 @@ map.addLayer(truckLayer);
 
 //  Add center marker
 const marker = new Feature({
-  geometry: new Point(fromLonLat([-97.748009, 30.277269]))
+  geometry: new Point(fromLonLat(startingLocation))
 });
 
 marker.setStyle(new Style({
