@@ -9,7 +9,7 @@ import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
-import { fromLonLat } from 'ol/proj';
+import { fromLonLat,toLonLat  } from 'ol/proj';
 import Overlay from 'ol/Overlay'; 
 
 const getData = (data) => {
@@ -99,6 +99,23 @@ const markerLayer = new VectorLayer({
 
 map.addLayer(markerLayer);
 
+// save marker location (can be used as user position later)
+const userCoordinates = marker.getGeometry().getCoordinates();
+
+const getDistance = (lat1, lon1, lat2, lon2) => {
+  const toRad = (value) => value * Math.PI / 180;
+
+  lat1 = toRad(lat1);
+  lon1 = toRad(lon1);
+  lat2 = toRad(lat2);
+  lon2 = toRad(lon2);
+
+  return Math.acos(
+    Math.sin(lat1) * Math.sin(lat2) +
+    Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1)
+  ) * 3958.8; // Earth radius in miles
+};
+
 
 //  Set up popup
 const container = document.getElementById('popup');
@@ -128,8 +145,29 @@ map.on('singleclick', function (evt) {
     const title = feature.get('title');
     const type = feature.get('type');
 
-    if (title && type) { // Only popup if feature has title/type
-      content.innerHTML = '<b>' + title + '</b><br/>' + type;
+    if (title && type) {
+      // Truck location
+      const truckCoords = feature.getGeometry().getCoordinates();
+      const truckLonLat = toLonLat(truckCoords); 
+
+      // User location
+      const userLonLat = toLonLat(userCoordinates); 
+
+      // Calculate distance
+      const distanceMiles = getDistance(
+        userLonLat[1], userLonLat[0],  // lat1, lon1
+        truckLonLat[1], truckLonLat[0] // lat2, lon2
+      );
+
+      const distanceRounded = distanceMiles.toFixed(2); // round to 2 decimal places
+
+      // Update popup content
+      content.innerHTML = `
+        <b>${title}</b><br/>
+        ${type}<br/>
+        Distance: ${distanceRounded} miles
+      `;
+
       overlay.setPosition(evt.coordinate);
     }
   });
