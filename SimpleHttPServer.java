@@ -177,9 +177,7 @@ public class SimpleHttPServer{
                     
 
                     //load response
-                    String body = loadFileContent("data.json");
-
-                    
+               
                     String length = loadFileContent("data.json");
                     byte[] bodyBytes = length.getBytes(StandardCharsets.UTF_8);  // Convert body to byte array
 
