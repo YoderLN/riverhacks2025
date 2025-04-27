@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.*;
 
+//PROGRAM BUILT ON JAVA 17, NEEDS JAVA 17 on host machine
+
 public class SimpleHttPServer{
 	public static List<FoodTruck> foodtrucks = new ArrayList<>();
 	
@@ -177,13 +179,21 @@ public class SimpleHttPServer{
                     //load response
                     String body = loadFileContent("data.json");
 
-                    //Send HTTP Response
-                    out.write("HTTP/1.1 200 OK\r\n");
-                    out.write("Content-Type: text/plain; charset=UTF-8\r\n");
-                    out.write("Content-Length: " + body.getBytes(StandardCharsets.UTF_8).length + "\r\n");
-                    out.write("\r\n");
-                    out.write(body);
-                    out.flush();
+                    
+                    String length = loadFileContent("data.json");
+                    byte[] bodyBytes = length.getBytes(StandardCharsets.UTF_8);  // Convert body to byte array
+
+                    
+
+                    
+                    BufferedOutputStream buffOut = new BufferedOutputStream(clientSocket.getOutputStream());
+                    buffOut.write("HTTP/1.1 200 OK\r\n".getBytes(StandardCharsets.UTF_8));
+                    buffOut.write("Content-Type: application/json; charset=UTF-8\r\n".getBytes(StandardCharsets.UTF_8));
+                    //out.write("Content-Length: " + bodyBytes.length + "\r\n".getBytes(StandardCharsets.UTF_8));
+                    buffOut.write("Access-Control-Allow-Origin: *\r\n".getBytes(StandardCharsets.UTF_8));
+                    buffOut.write("\r\n".getBytes(StandardCharsets.UTF_8));  // Empty line after headers
+                    buffOut.write(bodyBytes);
+                    buffOut.flush();
                 }
 
                 clientSocket.close();

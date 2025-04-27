@@ -49,7 +49,7 @@ const getData = (data) => {
   getTrucksList(typesSet);
 }
 
-const url = "http://localhost:5173/data.json";
+const url = "http://localhost:8700";
 const req = new XMLHttpRequest();
 req.responseType = 'json';
 req.onload = () => { getData(req.response) };
