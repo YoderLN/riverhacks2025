@@ -12,12 +12,14 @@ import Style from 'ol/style/Style';
 import { fromLonLat } from 'ol/proj';
 import Circle from 'ol/geom/Circle';
 import { Fill, Stroke } from 'ol/style';
+import Overlay from 'ol/Overlay'; 
 
-// ✅ 0. Helper function: Miles to Meters
+//Helper function: Miles to Meters
 function milesToMeters(miles) {
   return miles * 1609.34;
 }
 
+// Test data
 const test_data = [
   {
     "latitude": 30.2771,
@@ -39,29 +41,7 @@ const test_data = [
   }
 ];
 
-function getResurant(res) {
-  const temp_mark = new Feature({
-    geometry: new Point(fromLonLat([res.longitude,res.latitude]))
-  });
-  temp_mark.setStyle(new Style({
-      image: new Icon({
-        anchor: [0.5, 1],
-        src: 'https://openlayers.org/en/latest/examples/data/icon.png'
-      })
-  }));
-  const vSource = new VectorSource({ features: [temp_mark] });
-  return new VectorLayer({ source: vSource});
-}
-
-function importResturants(arr){
-  const restaurants = [];
-  for(let i = 0; i < arr.length; i++) {
-    restaurants.push(getResurant(arr[i]));
-  }
-  return restaurants;
-}
-
-// 1. Create the map
+//  Create the map first
 const map = new Map({
   target: 'map',
   layers: [
@@ -75,12 +55,52 @@ const map = new Map({
   })
 });
 
-// 2. Create a marker feature
+//  Create a truck source
+const truckSource = new VectorSource();
+
+//  Helper function to create a marker feature
+function getResurant(res) {
+  const temp_mark = new Feature({
+    geometry: new Point(fromLonLat([res.longitude, res.latitude]))
+  });
+
+  temp_mark.setProperties({
+    title: res.title,
+    type: res.type
+  });
+
+  temp_mark.setStyle(new Style({
+    image: new Icon({
+      anchor: [0.5, 1],
+      src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+    })
+  }));
+
+  return temp_mark;
+}
+
+//  Import restaurants 
+function importResturants(arr){
+  for (let i = 0; i < arr.length; i++) {
+    const feature = getResurant(arr[i]);
+    truckSource.addFeature(feature);
+  }
+}
+
+importResturants(test_data);
+
+//  Create a truck layer from the truckSource
+const truckLayer = new VectorLayer({
+  source: truckSource
+});
+
+map.addLayer(truckLayer);
+
+//  Add center marker
 const marker = new Feature({
   geometry: new Point(fromLonLat([-97.748009, 30.277269]))
 });
 
-// 3. Style the marker
 marker.setStyle(new Style({
   image: new Icon({
     anchor: [0.5, 1],
@@ -88,27 +108,19 @@ marker.setStyle(new Style({
   })
 }));
 
-// 4. Create a vector source and add the marker
 const vectorSource = new VectorSource({
   features: [marker]
 });
 
-// 5. Create a vector layer for the marker
 const markerLayer = new VectorLayer({
   source: vectorSource
 });
 
 map.addLayer(markerLayer);
 
-const trucks = importResturants(test_data); 
-for(let i = 0; i < trucks.length; i++) {
-  map.addLayer(trucks[i]);
-}
-
-// 6. Create a circle with radius 10 miles
-const center = marker.getGeometry().getCoordinates(); 
-
-const radiusInMiles = 2; // 10 miles
+// Create a circle with radius 2 miles around center
+const center = marker.getGeometry().getCoordinates();
+const radiusInMiles = 2;
 const radiusInMeters = milesToMeters(radiusInMiles);
 
 const circleFeature = new Feature({
@@ -135,4 +147,37 @@ const circleLayer = new VectorLayer({
 
 map.addLayer(circleLayer);
 
+//  Set up popup
+const container = document.getElementById('popup');
+const content = document.getElementById('popup-content');
+const closer = document.getElementById('popup-closer');
 
+const overlay = new Overlay({
+  element: container,
+  autoPan: true,
+  autoPanAnimation: {
+    duration: 250,
+  },
+});
+
+map.addOverlay(overlay);
+
+// Close the popup when X button clicked
+closer.onclick = function () {
+  overlay.setPosition(undefined);
+  closer.blur();
+  return false;
+};
+
+//  Show popup when clicking a marker
+map.on('singleclick', function (evt) {
+  map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+    const title = feature.get('title');
+    const type = feature.get('type');
+
+    if (title && type) { // Only popup if feature has title/type
+      content.innerHTML = '<b>' + title + '</b><br/>' + type;
+      overlay.setPosition(evt.coordinate);
+    }
+  });
+});
