@@ -405,3 +405,27 @@
 .ol-popup-closer:after {
   content: "✖";
 }
+
+
+#map-title {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  background-color: yellow;
+  font-family: 'Arial', sans-serif;
+  font-size: 36px;
+  color: purple;
+  font-weight: bold;
+  padding: 10px 0;
+  margin: 0;
+  z-index: 1000; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+
+#map {
+  width: 100%;
+  height: calc(100vh - 70px); 
+  margin-top: 70px;
+}
