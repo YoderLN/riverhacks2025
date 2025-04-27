@@ -72,7 +72,8 @@ function getResurant(res) {
   temp_mark.setStyle(new Style({
     image: new Icon({
       anchor: [0.5, 1],
-      src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+      src: 'https://cdn-icons-png.flaticon.com/512/7566/7566122.png',
+      scale: 0.08,
     })
   }));
 
