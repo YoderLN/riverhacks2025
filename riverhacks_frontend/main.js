@@ -32,10 +32,10 @@ if(ipAddress != 0){
   startingLocation = [-97.748009, 30.277269];
 }
 
-//values should be unique, so trying set
-const typesSet = new Set();
-
 const getData = (data) => {
+  //values should be unique, so trying set
+  const typesSet = new Set();
+
   for (let i = 0; i < data.length; i++) {
     // Make longitude and latitude to floats
     data[i].latitude = parseFloat(data[i].latitude);
@@ -44,9 +44,8 @@ const getData = (data) => {
     if(!typesSet.has(data[i].type)) typesSet.add(data[i].type);
   }
 
-  console.log(typesSet);
-
   importResturants(data);
+  getTrucksList(typesSet);
 }
 
 const url = "http://localhost:5173/data.json";
@@ -93,6 +92,19 @@ function getResurant(res) {
   }));
 
   return temp_mark;
+}
+
+//  Build trucks list
+function getTrucksList(set) {
+  const frag = new DocumentFragment();
+  const ul = document.createElement('ul');
+  frag.appendChild(ul);
+  set.forEach(val =>{
+    const li = document.createElement('li');
+    li.innerHTML = val;
+    ul.appendChild(li);
+  });
+  console.log(frag);
 }
 
 //  Import restaurants 
