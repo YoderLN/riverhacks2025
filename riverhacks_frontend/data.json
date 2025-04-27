@@ -1,0 +1,20 @@
+[
+    {
+        "latitude": 30.2771,
+        "longitude": -97.72813,
+        "title": "Arbor Food Park",
+        "type": "Takeout Restaurant"
+    },
+    {
+        "latitude": 30.263567,
+        "longitude": -97.76289,
+        "title": "The Picnic - Food Truck Park",
+        "type": "Food court"
+    },
+    {
+        "latitude": 30.26704,
+        "longitude": -97.73685,
+        "title": "Food trucks",
+        "type": "Mexican"
+    }
+]
