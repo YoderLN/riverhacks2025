@@ -120,34 +120,6 @@ const markerLayer = new VectorLayer({
 
 map.addLayer(markerLayer);
 
-// Create a circle with radius 2 miles around center
-const center = marker.getGeometry().getCoordinates();
-const radiusInMiles = 2;
-const radiusInMeters = milesToMeters(radiusInMiles);
-
-const circleFeature = new Feature({
-  geometry: new Circle(center, radiusInMeters)
-});
-
-circleFeature.setStyle(new Style({
-  stroke: new Stroke({
-    color: 'blue',
-    width: 2
-  }),
-  fill: new Fill({
-    color: 'rgba(0, 0, 255, 0.15)'
-  })
-}));
-
-const circleSource = new VectorSource({
-  features: [circleFeature]
-});
-
-const circleLayer = new VectorLayer({
-  source: circleSource
-});
-
-map.addLayer(circleLayer);
 
 //  Set up popup
 const container = document.getElementById('popup');
