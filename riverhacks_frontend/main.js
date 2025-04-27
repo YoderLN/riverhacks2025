@@ -13,6 +13,12 @@ import { fromLonLat,toLonLat  } from 'ol/proj';
 import Overlay from 'ol/Overlay'; 
 
 const getData = (data) => {
+  for (let i = 0; i < data.length; i++) {
+    // Make longitude and latitude to floats
+    data[i].latitude = parseFloat(data[i].latitude);
+    data[i].longitude = parseFloat(data[i].longitude);
+  }
+
   importResturants(data);
 }
 const url = "http://localhost:5173/data.json";

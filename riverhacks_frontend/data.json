@@ -1,38 +1,602 @@
 [
     {
-        "latitude": 30.2771,
-        "longitude": -97.72813,
-        "title": "Arbor Food Park",
-        "type": "Takeout Restaurant"
+      "latitude": "30.26704",
+      "longitude": "-97.73685",
+      "title": "Food trucks",
+      "type": "Mexican"
     },
     {
-        "latitude": 30.263567,
-        "longitude": -97.76289,
-        "title": "The Picnic - Food Truck Park",
-        "type": "Food court"
+      "latitude": "30.258492",
+      "longitude": "-97.71468",
+      "title": "Ftg Atx",
+      "type": "American"
     },
     {
-        "latitude": 30.26704,
-        "longitude": -97.73685,
-        "title": "Food trucks",
-        "type": "Mexican"
+      "latitude": "30.256083",
+      "longitude": "-97.72237",
+      "title": "Everest Momo \u0026 Food Truck(Nepali and Indian cuisine)",
+      "type": "Restaurant"
     },
     {
-        "latitude": 30.25704,
-        "longitude": -97.73685,
-        "title": "Food trucks",
-        "type": "Mexican"
+      "latitude": "30.25847",
+      "longitude": "-97.738716",
+      "title": "Night and Day Food Truck Park",
+      "type": "Food court"
     },
     {
-        "latitude": 30.26704,
-        "longitude": -96.73685,
-        "title": "Food trucks",
-        "type": "Mexican"
+      "latitude": "30.27271",
+      "longitude": "-97.72813",
+      "title": "Arbor Food Park",
+      "type": "Takeout Restaurant"
     },
     {
-        "latitude": 30.25704,
-        "longitude": -98,
-        "title": "Food trucks",
-        "type": "Mexican"
+      "latitude": "30.29053",
+      "longitude": "-97.74467",
+      "title": "Food Trucks",
+      "type": "Food court"
+    },
+    {
+      "latitude": "30.264402",
+      "longitude": "-97.73083",
+      "title": "JewBoy Sliders",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.266867",
+      "longitude": "-97.73961",
+      "title": "TacoWey",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.267345",
+      "longitude": "-97.73712",
+      "title": "DittyDog",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.262896",
+      "longitude": "-97.72501",
+      "title": "Manna Kitchen Food Truck",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.267815",
+      "longitude": "-97.73869",
+      "title": "Heros Gyros",
+      "type": "Gyro"
+    },
+    {
+      "latitude": "30.2836",
+      "longitude": "-97.74051",
+      "title": "Gyro Delicious",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.257769",
+      "longitude": "-97.7258",
+      "title": "Oye Taquito 956",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.263935",
+      "longitude": "-97.72871",
+      "title": "The Smokin\u0027 Rose Taco Joint",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.262014",
+      "longitude": "-97.72269",
+      "title": "Golden Tiger",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.266525",
+      "longitude": "-97.739975",
+      "title": "Tchiadai",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.263567",
+      "longitude": "-97.76289",
+      "title": "The Picnic - Food Truck Park",
+      "type": "Food court"
+    },
+    {
+      "latitude": "30.269545",
+      "longitude": "-97.74138",
+      "title": "IL Saporis Italian Food Truck",
+      "type": "Italian"
+    },
+    {
+      "latitude": "30.267994",
+      "longitude": "-97.73867",
+      "title": "Shako Mako Halal",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.26311",
+      "longitude": "-97.72609",
+      "title": "R\u0026B\u0027s Steak and Fries",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.258432",
+      "longitude": "-97.738655",
+      "title": "Burro Cheese Kitchen",
+      "type": "Sandwich"
+    },
+    {
+      "latitude": "30.227192",
+      "longitude": "-97.76241",
+      "title": "Pueblo Viejo Taco Truck",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.29053",
+      "longitude": "-97.74467",
+      "title": "Food Trucks",
+      "type": "Food court"
+    },
+    {
+      "latitude": "30.2699",
+      "longitude": "-97.7498",
+      "title": "Stony\u0027s Pizza - West 6th",
+      "type": "Pizza Takeout"
+    },
+    {
+      "latitude": "30.290497",
+      "longitude": "-97.744965",
+      "title": "Suns Out Buns Out Burger Company Austin TX",
+      "type": "Hamburger"
+    },
+    {
+      "latitude": "30.261192",
+      "longitude": "-97.73838",
+      "title": "Taco Baby",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.25847",
+      "longitude": "-97.738716",
+      "title": "Night and Day Food Truck Park",
+      "type": "Food court"
+    },
+    {
+      "latitude": "30.266916",
+      "longitude": "-97.73914",
+      "title": "1st Choice Mediterranean Food",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.2836",
+      "longitude": "-97.74051",
+      "title": "Gyro Delicious",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.259884",
+      "longitude": "-97.73176",
+      "title": "Las Trancas Taco Stand",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.263369",
+      "longitude": "-97.727234",
+      "title": "East 6th Food Trucks",
+      "type": "Fast Food"
+    },
+    {
+      "latitude": "30.261002",
+      "longitude": "-97.737915",
+      "title": "Kubaya",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.263474",
+      "longitude": "-97.76287",
+      "title": "The Burger Truck",
+      "type": "Hamburger"
+    },
+    {
+      "latitude": "30.26311",
+      "longitude": "-97.72609",
+      "title": "Little Plaza Tacos and More",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.26311",
+      "longitude": "-97.72609",
+      "title": "R\u0026B\u0027s Steak and Fries",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.267345",
+      "longitude": "-97.73712",
+      "title": "DittyDog",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.262564",
+      "longitude": "-97.727005",
+      "title": "Bomb Tacos",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.267685",
+      "longitude": "-97.741",
+      "title": "Food Notes",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.265635",
+      "longitude": "-97.733635",
+      "title": "Sarah\u0027s On The Road",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.269384",
+      "longitude": "-97.748695",
+      "title": "Fresh Gyro Halal",
+      "type": "Gyro"
+    },
+    {
+      "latitude": "30.290545",
+      "longitude": "-97.74509",
+      "title": "ATX Gyro",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.263758",
+      "longitude": "-97.728035",
+      "title": "Halal time",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.259884",
+      "longitude": "-97.73176",
+      "title": "Las Trancas Taco Stand",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.27266",
+      "longitude": "-97.728165",
+      "title": "Cuantos Tacos",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.261002",
+      "longitude": "-97.737915",
+      "title": "Kubaya",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.259535",
+      "longitude": "-97.73825",
+      "title": "Fresh gyro halal",
+      "type": "Gyro"
+    },
+    {
+      "latitude": "30.263474",
+      "longitude": "-97.76287",
+      "title": "The Burger Truck",
+      "type": "Hamburger"
+    },
+    {
+      "latitude": "30.267685",
+      "longitude": "-97.741",
+      "title": "Food Notes",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.242867",
+      "longitude": "-97.72962",
+      "title": "Rosita\u0027s Al Pastor",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.281225",
+      "longitude": "-97.7408",
+      "title": "USA HALAL - Mediterranean Food",
+      "type": "Halal"
+    },
+    {
+      "latitude": "30.262564",
+      "longitude": "-97.727005",
+      "title": "Bomb Tacos",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.26905",
+      "longitude": "-97.728325",
+      "title": "Hippie PicNik",
+      "type": "German"
+    },
+    {
+      "latitude": "30.242409",
+      "longitude": "-97.75269",
+      "title": "Nourished ATX",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.268536",
+      "longitude": "-97.7281",
+      "title": "Delray Cafe",
+      "type": "Hot Dog Stand"
+    },
+    {
+      "latitude": "30.26803",
+      "longitude": "-97.73884",
+      "title": "Austin Gyro Halal",
+      "type": "Gyro"
+    },
+    {
+      "latitude": "30.259182",
+      "longitude": "-97.731186",
+      "title": "Palomino\u0027s Food Truck",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.258444",
+      "longitude": "-97.73873",
+      "title": "La Sirena food truck",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.264357",
+      "longitude": "-97.72802",
+      "title": "Granny\u0027s Tacos",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.267727",
+      "longitude": "-97.73895",
+      "title": "YALLA BURGER \u0026 WINGS Halal",
+      "type": "Halal"
+    },
+    {
+      "latitude": "30.26314",
+      "longitude": "-97.72603",
+      "title": "Madrasdhaba",
+      "type": "Indian"
+    },
+    {
+      "latitude": "30.26115",
+      "longitude": "-97.75749",
+      "title": "Sosa Mediterranean foods",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.263227",
+      "longitude": "-97.72667",
+      "title": "Tacos Juanita",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.21469",
+      "longitude": "-97.76247",
+      "title": "Muy Yum Food Truck + Catering",
+      "type": "Latin American"
+    },
+    {
+      "latitude": "30.264114",
+      "longitude": "-97.72926",
+      "title": "The Lucky Duck",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.314924",
+      "longitude": "-97.74122",
+      "title": "Everything New Orleans",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.242964",
+      "longitude": "-97.73018",
+      "title": "Taqueria El Vallecito",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.32093",
+      "longitude": "-97.7398",
+      "title": "T-Loc\u0027s Sonora",
+      "type": "Hot Dog Stand"
+    },
+    {
+      "latitude": "30.267254",
+      "longitude": "-97.73725",
+      "title": "Taste From India",
+      "type": "Indian"
+    },
+    {
+      "latitude": "30.24162",
+      "longitude": "-97.75982",
+      "title": "Halal Hub(South)",
+      "type": "Takeout Restaurant"
+    },
+    {
+      "latitude": "30.244375",
+      "longitude": "-97.75798",
+      "title": "Tx shawarma",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.25355",
+      "longitude": "-97.76354",
+      "title": "Wrigleyville South Dogs \u0026 Beef",
+      "type": "Hot Dog Stand"
+    },
+    {
+      "latitude": "30.269547",
+      "longitude": "-97.753075",
+      "title": "Austin\u0027s Habibi LLC on 5 street",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.285683",
+      "longitude": "-97.711586",
+      "title": "La Santa Barbacha",
+      "type": "Mexican"
+    },
+    {
+      "latitude": "30.283089",
+      "longitude": "-97.74057",
+      "title": "Wabara Food Truck",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.259937",
+      "longitude": "-97.75833",
+      "title": "ATXFOODCO.",
+      "type": "Vegan"
+    },
+    {
+      "latitude": "30.254509",
+      "longitude": "-97.73731",
+      "title": "Austin Food Park",
+      "type": "Association / Organization"
+    },
+    {
+      "latitude": "30.26571",
+      "longitude": "-97.74398",
+      "title": "AUSTHENTICO",
+      "type": "Spanish"
+    },
+    {
+      "latitude": "30.236872",
+      "longitude": "-97.69553",
+      "title": "La Media Luna Food Truck",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.255116",
+      "longitude": "-97.718315",
+      "title": "The Vegan Nom",
+      "type": "Vegan"
+    },
+    {
+      "latitude": "30.244665",
+      "longitude": "-97.75729",
+      "title": "El Primo",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.343615",
+      "longitude": "-97.60647",
+      "title": "El Mana Authentic Mexican Food Truck",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.266645",
+      "longitude": "-97.73996",
+      "title": "Peace Eatery",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.254105",
+      "longitude": "-97.76311",
+      "title": "Trippy Tacos #2",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.26314",
+      "longitude": "-97.72603",
+      "title": "Jads Mediterranean Halal Grill Austin",
+      "type": "Mediterranean"
+    },
+    {
+      "latitude": "30.263168",
+      "longitude": "-97.75655",
+      "title": "Gimme Burger",
+      "type": "American"
+    },
+    {
+      "latitude": "30.265272",
+      "longitude": "-97.73409",
+      "title": "Food Truck Corner",
+      "type": "Takeout Restaurant"
+    },
+    {
+      "latitude": "30.29513",
+      "longitude": "-97.74254",
+      "title": "Abu Omar Halal - Austin, TX",
+      "type": "Middle Eastern"
+    },
+    {
+      "latitude": "30.263693",
+      "longitude": "-97.74378",
+      "title": "Shawarma Point",
+      "type": "Middle Eastern"
+    },
+    {
+      "latitude": "30.245413",
+      "longitude": "-97.72888",
+      "title": "Brunch Brunch Baby",
+      "type": "Brunch"
+    },
+    {
+      "latitude": "30.242409",
+      "longitude": "-97.75269",
+      "title": "Tamale Addiction - Food truck",
+      "type": "Tamale shop"
+    },
+    {
+      "latitude": "30.266449",
+      "longitude": "-97.740074",
+      "title": "Yummy ATX Food",
+      "type": "American"
+    },
+    {
+      "latitude": "30.267937",
+      "longitude": "-97.74309",
+      "title": "Velvet Taco",
+      "type": "Tacos"
+    },
+    {
+      "latitude": "30.267727",
+      "longitude": "-97.73895",
+      "title": "Dorian\u0027s Bistro",
+      "type": "Bistro"
+    },
+    {
+      "latitude": "30.450218",
+      "longitude": "-97.783325",
+      "title": "Shoyu Sugar",
+      "type": "Hawaiian"
+    },
+    {
+      "latitude": "30.288256",
+      "longitude": "-97.747215",
+      "title": "Chef Hong",
+      "type": "Chinese Takeout"
+    },
+    {
+      "latitude": "30.2635",
+      "longitude": "-97.76282",
+      "title": "Big Easy Bar and Grill",
+      "type": "Cajun"
+    },
+    {
+      "latitude": "30.251974",
+      "longitude": "-97.753975",
+      "title": "Konfusedesi",
+      "type": "Indian"
+    },
+    {
+      "latitude": "30.269833",
+      "longitude": "-97.74129",
+      "title": "Sapori Italian Roots",
+      "type": "Restaurant"
+    },
+    {
+      "latitude": "30.263605",
+      "longitude": "-97.76299",
+      "title": "Coat \u0026 Thai",
+      "type": "Thai"
+    },
+    {
+      "latitude": "30.272568",
+      "longitude": "-97.7284",
+      "title": "Krab Kingz Seafood Austin",
+      "type": "Seafood"
     }
-]
+  ]
