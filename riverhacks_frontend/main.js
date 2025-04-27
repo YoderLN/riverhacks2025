@@ -15,6 +15,7 @@ import Overlay from 'ol/Overlay';
 let ipAddress;
 let startingLocation;
 
+//currently effectively unused attempt to get initial user location
 fetch('https://api.ipify.org?format=json')
 .then(response => response.json())
 .then(data => ipAddress = data.ip)
@@ -31,15 +32,23 @@ if(ipAddress != 0){
   startingLocation = [-97.748009, 30.277269];
 }
 
+//values should be unique, so trying set
+const typesSet = new Set();
+
 const getData = (data) => {
   for (let i = 0; i < data.length; i++) {
     // Make longitude and latitude to floats
     data[i].latitude = parseFloat(data[i].latitude);
     data[i].longitude = parseFloat(data[i].longitude);
+
+    if(!typesSet.has(data[i].type)) typesSet.add(data[i].type);
   }
+
+  console.log(typesSet);
 
   importResturants(data);
 }
+
 const url = "http://localhost:5173/data.json";
 const req = new XMLHttpRequest();
 req.responseType = 'json';
