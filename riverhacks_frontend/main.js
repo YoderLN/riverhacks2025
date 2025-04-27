@@ -94,6 +94,9 @@ function getResurant(res) {
     })
   }));
 
+  /*
+  opacity switch --TODO
+  */
   //console.log(temp_mark.getStyle().getImage().setOpacity(1));
 
   return temp_mark;
