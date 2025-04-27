@@ -105,6 +105,7 @@ function getTrucksList(set) {
     ul.appendChild(li);
   });
   console.log(frag);
+  document.querySelector('aside').appendChild(frag);
 }
 
 //  Import restaurants 
