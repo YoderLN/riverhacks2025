@@ -97,15 +97,22 @@ function getResurant(res) {
 //  Build trucks list
 function getTrucksList(set) {
   const frag = new DocumentFragment();
-  const ul = document.createElement('ul');
-  frag.appendChild(ul);
   set.forEach(val =>{
-    const li = document.createElement('li');
-    li.innerHTML = val;
-    ul.appendChild(li);
+    const txtbox = document.createElement('input');
+    const txtlabel = document.createElement('label');
+    const wrapper = document.createElement('div');
+    txtbox.type = "checkbox";
+    txtbox.name = val;
+    txtbox.value = val;
+    txtbox.id = val;
+    txtbox.checked = true;
+    txtlabel.innerText = val;
+    txtlabel.htmlFor = val;
+    wrapper.appendChild(txtlabel);
+    wrapper.appendChild(txtbox);
+    frag.appendChild(wrapper);
   });
-  console.log(frag);
-  document.querySelector('aside').appendChild(frag);
+  document.querySelector('fieldset').appendChild(frag);
 }
 
 //  Import restaurants 
