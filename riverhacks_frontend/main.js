@@ -10,8 +10,6 @@ import VectorLayer from 'ol/layer/Vector';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
 import { fromLonLat } from 'ol/proj';
-//import Circle from 'ol/geom/Circle';
-//import { Fill, Stroke } from 'ol/style';
 import Overlay from 'ol/Overlay'; 
 
 const getData = (data) => {
