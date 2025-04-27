@@ -64,8 +64,7 @@ function getResurant(res) {
 //  Import restaurants 
 function importResturants(arr){
   for (let i = 0; i < arr.length; i++) {
-    const feature = getResurant(arr[i]);
-    truckSource.addFeature(feature);
+    truckSource.addFeature(getResurant(arr[i]));
   }
 }
 
@@ -83,7 +82,7 @@ const marker = new Feature({
 
 marker.setStyle(new Style({
   image: new Icon({
-    anchor: [0.5, 1],
+    anchor: [0.5, 0.5],
     src: 'https://i.postimg.cc/4dQVFCcd/Purple-ACCBat.png',
     scale: 0.08
   })
@@ -141,11 +140,16 @@ closer.onclick = function () {
 
 //  Show popup when clicking a marker
 map.on('singleclick', function (evt) {
+  //hacky bool to ensure user icon doesn't overalp trucks
+  let truckLocale = false;
+
   map.forEachFeatureAtPixel(evt.pixel, function (feature) {
     const title = feature.get('title');
     const type = feature.get('type');
 
     if (title && type) {
+      truckLocale = true;
+
       // Truck location
       const truckCoords = feature.getGeometry().getCoordinates();
       const truckLonLat = toLonLat(truckCoords); 
@@ -171,4 +175,6 @@ map.on('singleclick', function (evt) {
       overlay.setPosition(evt.coordinate);
     }
   });
+
+  if(!truckLocale) marker.setGeometry(new Point([evt.coordinate[0], evt.coordinate[1]]));
 });

@@ -16,5 +16,23 @@
         "longitude": -97.73685,
         "title": "Food trucks",
         "type": "Mexican"
+    },
+    {
+        "latitude": 30.25704,
+        "longitude": -97.73685,
+        "title": "Food trucks",
+        "type": "Mexican"
+    },
+    {
+        "latitude": 30.26704,
+        "longitude": -96.73685,
+        "title": "Food trucks",
+        "type": "Mexican"
+    },
+    {
+        "latitude": 30.25704,
+        "longitude": -98,
+        "title": "Food trucks",
+        "type": "Mexican"
     }
 ]
