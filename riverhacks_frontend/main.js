@@ -32,6 +32,37 @@ if(ipAddress != 0){
 } else {
   startingLocation = [-97.748009, 30.277269];
 }
+// Add event listener to the fieldset to handle checkbox changes
+document.querySelector('fieldset').addEventListener('change', function(e) {
+  if (e.target.type === 'checkbox') {
+    const truckType = e.target.value;
+    const isVisible = e.target.checked;
+    
+    // Get all features from the truckSource
+    const features = truckSource.getFeatures();
+    
+    // Loop through features and toggle visibility based on type
+    features.forEach(feature => {
+      if (feature.get('type') === truckType) {
+        // Get the current style
+        const currentStyle = feature.getStyle();
+        
+        // Create a new style with updated opacity
+        const newStyle = new Style({
+          image: new Icon({
+            anchor: [0.5, 1],
+            src: 'https://cdn-icons-png.flaticon.com/512/7566/7566122.png',
+            scale: 0.08,
+            opacity: isVisible ? 1 : 0 // Set to 0 for invisible, 1 for visible
+          })
+        });
+        
+        // Apply the new style
+        feature.setStyle(newStyle);
+      }
+    });
+  }
+});
 
 const getData = (data) => {
   //values should be unique, so trying set
