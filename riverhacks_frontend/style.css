@@ -31,12 +31,22 @@ html, body {
   background-color: yellow;
   font-family: 'Arial', sans-serif;
   font-size: 36px;
-  color: purple;
+  color: black;
   font-weight: bold;
   padding: 10px 0;
   margin: 0;
   z-index: 1000; 
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+/* map color */
+.purple-letter {
+  color: purple;
+}
+.map-title span {
+  color: black;
+}
+.map-title span.purple-letter {
+  color: purple;
 }
 
 /*custom html*/
