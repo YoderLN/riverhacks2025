@@ -105,7 +105,8 @@ const marker = new Feature({
 marker.setStyle(new Style({
   image: new Icon({
     anchor: [0.5, 1],
-    src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+    src: 'https://i.postimg.cc/4dQVFCcd/Purple-ACCBat.png',
+    scale: 0.08
   })
 }));
 
@@ -134,7 +135,7 @@ circleFeature.setStyle(new Style({
     width: 2
   }),
   fill: new Fill({
-    color: 'rgba(0, 0, 255, 0.3)'
+    color: 'rgba(0, 0, 255, 0.15)'
   })
 }));
 
