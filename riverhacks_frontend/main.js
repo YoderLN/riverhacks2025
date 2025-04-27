@@ -105,7 +105,7 @@ function getResurant(res) {
 //  Build trucks list
 function getTrucksList(set) {
   const frag = new DocumentFragment();
-  set.forEach(val =>{
+  set.forEach(val => {
     const txtbox = document.createElement('input');
     const txtlabel = document.createElement('label');
     const wrapper = document.createElement('div');
@@ -121,14 +121,45 @@ function getTrucksList(set) {
     frag.appendChild(wrapper);
   });
   document.querySelector('fieldset').appendChild(frag);
-}
 
-//  Import restaurants 
+  /*  listeners for clcick 
+  document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+    box.addEventListener('change', function() {
+      const type = this.value;
+      const visible = this.checked;
+
+      if (typeGroups[type]) {
+        typeGroups[type].forEach(feature => {
+          const currentStyle = feature.getStyle();
+          const imageStyle = currentStyle.getImage();
+          imageStyle.setOpacity(visible ? 1 : 0);
+          feature.setStyle(currentStyle);
+
+          feature.set('hidden', !visible); */
+  }
+
+
+
+  // Here i am importing the titles and grouping them 
+const typeGroups = {}; 
+
+//  Import restaurants and features 
 function importResturants(arr){
   for (let i = 0; i < arr.length; i++) {
-    truckSource.addFeature(getResurant(arr[i]));
+    const feature = getResurant(arr[i]);
+    feature.set('hidden', false);
+    truckSource.addFeature(feature);
+    
+    const type = arr[i].type;
+    if (!typeGroups[type]) {
+      typeGroups[type] = [];
+    }
+    typeGroups[type].push(feature);
   }
+
 }
+
+
 
 //  Create a truck layer from the truckSource
 const truckLayer = new VectorLayer({
@@ -206,6 +237,13 @@ closer.onclick = function () {
 map.on('singleclick', function (evt) {
   //hacky bool to ensure user icon doesn't overalp trucks
   let truckLocale = false;
+
+
+  /* hides trucks
+  if (feature.get('hidden')) {
+    return;
+   } */
+
 
   map.forEachFeatureAtPixel(evt.pixel, function (feature) {
     const title = feature.get('title');
