@@ -98,9 +98,6 @@ const markerLayer = new VectorLayer({
 
 map.addLayer(markerLayer);
 
-// save marker location (can be used as user position later)
-const userCoordinates = marker.getGeometry().getCoordinates();
-
 const getDistance = (lat1, lon1, lat2, lon2) => {
   const toRad = (value) => value * Math.PI / 180;
 
@@ -121,6 +118,10 @@ const container = document.getElementById('popup');
 const content = document.getElementById('popup-content');
 const closer = document.getElementById('popup-closer');
 
+content.addEventListener('close', ()=>{
+
+})
+
 const overlay = new Overlay({
   element: container,
   autoPan: true,
@@ -138,6 +139,11 @@ closer.onclick = function () {
   return false;
 };
 
+
+let truckCoords = marker.getGeometry().getCoordinates();
+let distanceRounded = 0.0;
+let event = {};
+
 //  Show popup when clicking a marker
 map.on('singleclick', function (evt) {
   //hacky bool to ensure user icon doesn't overalp trucks
@@ -149,32 +155,36 @@ map.on('singleclick', function (evt) {
 
     if (title && type) {
       truckLocale = true;
-
       // Truck location
-      const truckCoords = feature.getGeometry().getCoordinates();
-      const truckLonLat = toLonLat(truckCoords); 
-
-      // User location
-      const userLonLat = toLonLat(userCoordinates); 
-
-      // Calculate distance
-      const distanceMiles = getDistance(
-        userLonLat[1], userLonLat[0],  // lat1, lon1
-        truckLonLat[1], truckLonLat[0] // lat2, lon2
-      );
-
-      const distanceRounded = distanceMiles.toFixed(2); // round to 2 decimal places
-
-      // Update popup content
-      content.innerHTML = `
-        <b>${title}</b><br/>
-        ${type}<br/>
-        Distance: ${distanceRounded} miles
-      `;
-
-      overlay.setPosition(evt.coordinate);
+      truckCoords = feature.getGeometry().getCoordinates();
+      event.pos = evt.coordinate;
+      event.title = title;
+      event.type = type;
     }
   });
 
   if(!truckLocale) marker.setGeometry(new Point([evt.coordinate[0], evt.coordinate[1]]));
+  //else {
+    // Update popup content
+  
+    content.innerHTML = `
+        <b>${event.title}</b><br/>
+        ${event.type}<br/>
+        Distance: ${distanceRounded} miles`;
+    overlay.setPosition(event.pos);
+  //}
+
+  // User location
+  const userLonLat = toLonLat(marker.getGeometry().getCoordinates()); 
+
+  //console.log(truckCoords)
+  //if(truckCoords.length > 0){
+  const truckLonLat = toLonLat(truckCoords); 
+    // Calculate distance
+  const distanceMiles = getDistance(
+    userLonLat[1], userLonLat[0],  // lat1, lon1
+    truckLonLat[1], truckLonLat[0] // lat2, lon2
+  );
+  distanceRounded = distanceMiles.toFixed(2); // round to 2 decimal places
+  //}
 });
