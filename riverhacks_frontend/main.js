@@ -10,36 +10,19 @@ import VectorLayer from 'ol/layer/Vector';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
 import { fromLonLat } from 'ol/proj';
-import Circle from 'ol/geom/Circle';
-import { Fill, Stroke } from 'ol/style';
+//import Circle from 'ol/geom/Circle';
+//import { Fill, Stroke } from 'ol/style';
 import Overlay from 'ol/Overlay'; 
 
-//Helper function: Miles to Meters
-function milesToMeters(miles) {
-  return miles * 1609.34;
+const getData = (data) => {
+  importResturants(data);
 }
-
-// Test data
-const test_data = [
-  {
-    "latitude": 30.2771,
-    "longitude": -97.72813,
-    "title": "Arbor Food Park",
-    "type": "Takeout Restaurant",
-  },
-  {
-    "latitude": 30.263567,
-    "longitude": -97.76289,
-    "title": "The Picnic - Food Truck Park",
-    "type": "Food court",
-  },
-  {
-    "latitude": 30.26704,
-    "longitude": -97.73685,
-    "title": "Food trucks",
-    "type": "Mexican",
-  }
-];
+const url = "http://localhost:5173/data.json";
+const req = new XMLHttpRequest();
+req.responseType = 'json';
+req.onload = () => { getData(req.response) };
+req.open("GET", url);
+req.send();
 
 //  Create the map first
 const map = new Map({
@@ -87,8 +70,6 @@ function importResturants(arr){
     truckSource.addFeature(feature);
   }
 }
-
-importResturants(test_data);
 
 //  Create a truck layer from the truckSource
 const truckLayer = new VectorLayer({
