@@ -138,17 +138,18 @@ const overlay = new Overlay({
 
 map.addOverlay(overlay);
 
-// Close the popup when X button clicked
-closer.onclick = function () {
-  overlay.setPosition(undefined);
-  closer.blur();
-  return false;
-};
-
-
 let truckCoords = marker.getGeometry().getCoordinates();
 let distanceRounded = 0.0;
 let event = {};
+let contentUI = false;
+
+// Close the popup when X button clicked
+closer.onclick = function () {
+  overlay.setPosition(undefined);
+  contentUI = false;
+  closer.blur();
+  return false;
+};
 
 //  Show popup when clicking a marker
 map.on('singleclick', function (evt) {
@@ -160,25 +161,25 @@ map.on('singleclick', function (evt) {
     const type = feature.get('type');
 
     if (title && type) {
-      truckLocale = true;
       // Truck location
       truckCoords = feature.getGeometry().getCoordinates();
       event.pos = evt.coordinate;
       event.title = title;
       event.type = type;
+      truckLocale = true;
+      contentUI = true;
     }
   });
 
   if(!truckLocale) marker.setGeometry(new Point([evt.coordinate[0], evt.coordinate[1]]));
-  //else {
+  if(contentUI) {
     // Update popup content
-  
     content.innerHTML = `
         <b>${event.title}</b><br/>
         ${event.type}<br/>
         Distance: ${distanceRounded} miles`;
     overlay.setPosition(event.pos);
-  //}
+  }
 
   // User location
   const userLonLat = toLonLat(marker.getGeometry().getCoordinates()); 
