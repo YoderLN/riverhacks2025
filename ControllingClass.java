@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -5,13 +6,15 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.MalformedInputException;
 import com.google.gson.*;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Formatter;
+import java.io.FileWriter;
 
 public class ControllingClass {
 	private List<FoodTruck> foodtrucks = new ArrayList<>();
+	
+	private Formatter output = null;
 	
 	public static void main(String [] args)
 	{
@@ -93,8 +96,25 @@ public class ControllingClass {
 	
 	public void backToJson()
 	{
+		try {
+			output = new Formatter("FoodTruckList.txt");
+		}
+		catch (FileNotFoundException e) 
+	   	   {
+	   	        System.err.println("Issue with creating output file.");
+	   	        System.err.println(e.toString());
+	   	   }
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String prettyJson = gson.toJson(foodtrucks);
-		System.out.println(prettyJson);
+		//System.out.println(prettyJson);
+		output.format(prettyJson);
+		output.close();
+		
+		try (FileWriter writer = new FileWriter("data.json")) {
+            writer.write(prettyJson);
+            System.out.println("Successfully wrote JSON to file: data.json");
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
 	}
 }
