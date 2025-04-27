@@ -141,6 +141,7 @@ map.addOverlay(overlay);
 let truckCoords = marker.getGeometry().getCoordinates();
 let distanceRounded = 0.0;
 let event = {};
+//more hacky manual state management
 let contentUI = false;
 
 // Close the popup when X button clicked
@@ -172,6 +173,17 @@ map.on('singleclick', function (evt) {
   });
 
   if(!truckLocale) marker.setGeometry(new Point([evt.coordinate[0], evt.coordinate[1]]));
+
+  // User location
+  const userLonLat = toLonLat(marker.getGeometry().getCoordinates()); 
+  const truckLonLat = toLonLat(truckCoords); 
+    // Calculate distance
+  const distanceMiles = getDistance(
+    userLonLat[1], userLonLat[0],  // lat1, lon1
+    truckLonLat[1], truckLonLat[0] // lat2, lon2
+  );
+  distanceRounded = distanceMiles.toFixed(2);
+
   if(contentUI) {
     // Update popup content
     content.innerHTML = `
@@ -180,18 +192,4 @@ map.on('singleclick', function (evt) {
         Distance: ${distanceRounded} miles`;
     overlay.setPosition(event.pos);
   }
-
-  // User location
-  const userLonLat = toLonLat(marker.getGeometry().getCoordinates()); 
-
-  //console.log(truckCoords)
-  //if(truckCoords.length > 0){
-  const truckLonLat = toLonLat(truckCoords); 
-    // Calculate distance
-  const distanceMiles = getDistance(
-    userLonLat[1], userLonLat[0],  // lat1, lon1
-    truckLonLat[1], truckLonLat[0] // lat2, lon2
-  );
-  distanceRounded = distanceMiles.toFixed(2); // round to 2 decimal places
-  //}
 });
