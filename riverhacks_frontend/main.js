@@ -8,9 +8,10 @@ import Point from 'ol/geom/Point';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import Icon from 'ol/style/Icon';
-import Style from 'ol/style/Style';
+import {Circle, Fill, Stroke, Style}  from 'ol/style.js';
 import { fromLonLat,toLonLat  } from 'ol/proj';
 import Overlay from 'ol/Overlay'; 
+//import from 'ol/style.js';
 
 let ipAddress;
 let startingLocation;
@@ -71,6 +72,7 @@ const map = new Map({
 
 //  Create a truck source
 const truckSource = new VectorSource();
+const trucks = {};
 
 //  Helper function to create a marker feature
 function getResurant(res) {
@@ -88,8 +90,11 @@ function getResurant(res) {
       anchor: [0.5, 1],
       src: 'https://cdn-icons-png.flaticon.com/512/7566/7566122.png',
       scale: 0.08,
+      opacity: 1
     })
   }));
+
+  //console.log(temp_mark.getStyle().getImage().setOpacity(1));
 
   return temp_mark;
 }
@@ -134,22 +139,20 @@ const marker = new Feature({
   geometry: new Point(fromLonLat(startingLocation))
 });
 
+//  User's icon
 marker.setStyle(new Style({
   image: new Icon({
-    anchor: [0.5, 0.5],
+    anchor: [0.5, 0.5], //currently centered on mouse click
     src: 'https://i.postimg.cc/4dQVFCcd/Purple-ACCBat.png',
     scale: 0.08
   })
 }));
-
 const vectorSource = new VectorSource({
   features: [marker]
 });
-
 const markerLayer = new VectorLayer({
   source: vectorSource
 });
-
 map.addLayer(markerLayer);
 
 const getDistance = (lat1, lon1, lat2, lon2) => {
@@ -171,10 +174,6 @@ const getDistance = (lat1, lon1, lat2, lon2) => {
 const container = document.getElementById('popup');
 const content = document.getElementById('popup-content');
 const closer = document.getElementById('popup-closer');
-
-content.addEventListener('close', ()=>{
-
-})
 
 const overlay = new Overlay({
   element: container,
