@@ -42,7 +42,7 @@ public class SimpleHttPServer{
 		
 		public static void getJsonResponse(String start)
 		{
-			String builtQuery = "https://serpapi.com/search.json?engine=google_local&start="+start+ "&q=food+truck&location=Downtown+Austin%2C+Texas%2C+United+States&google_domain=google.com&gl=us&hl=en&api_key=5859c81649339aa8a0ff62e78454e2c919824985c8a3604f79f0de4103b42813";
+		String builtQuery = "https://serpapi.com/search.json?engine=google_local&start="+start+ "&q=food+truck&location=Downtown+Austin%2C+Texas%2C+United+States&google_domain=google.com&gl=us&hl=en&[APIKEYHERE];
 			
 			try 
 			{
